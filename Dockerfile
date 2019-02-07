@@ -4,14 +4,14 @@ ENV LANG en_US.UTF-8
 ARG PACKAGES="postgresql postgresql-contrib"
 ENV PGDATA="/var/lib/postgres/data"
 
-COPY root /
-
 RUN apk --update add --no-cache $PACKAGES && \
     chown -R postgres:postgres /var/lib/postgres
 
 USER postgres
 
 RUN pg_ctl init 
+
+COPY root /
  
 EXPOSE 5432/tcp
 CMD ["postgres", "-i"]
