@@ -6,13 +6,11 @@ ENV PGDATA="/var/lib/postgres/data"
 
 RUN apk --update add --no-cache $PACKAGES && \
     mkdir -p /var/lib/postgres/data && \
-    chown -r postgres:postgres /var/lib/postgres
+    chown -R postgres:postgres /var/lib/postgres
 
 USER postgres
 RUN pg_ctl init 
 COPY root /
-RUN chown -r postgres:postgres /var/lib/postgres/data
-
  
 EXPOSE 5432/tcp
 CMD ["postgres", "-i"]
