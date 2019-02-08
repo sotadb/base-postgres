@@ -5,7 +5,7 @@ ARG PACKAGES="postgresql postgresql-contrib"
 ENV PGDATA="/var/lib/postgres/data"
 
 RUN apk --update add --no-cache $PACKAGES && \
-    mkdir -p /var/lib/postgres && \
+    mkdir -p /var/lib/postgres/data && \
     chown -R postgres:postgres /var/lib/postgres
 
 USER postgres

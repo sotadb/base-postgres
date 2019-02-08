@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres 
+spec:
+  selector:
+    svc: postgres
+  ports:
+  - protocol: TCP
+    port: 5432
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: postgres-deployment
+spec:
+  selector:
+    matchLabels:
+      svc: postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        svc: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: sotadb/postgres 
+        ports: 
+        - containerPort: 5432
