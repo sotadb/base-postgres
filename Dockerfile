@@ -9,9 +9,9 @@ RUN apk --update add --no-cache $PACKAGES && \
     chown -R postgres:root /var/lib/postgres
 
 USER postgres
-RUN pg_ctl init && \ 
-    chmod -R 0700 /var/lib/postgres
-COPY --chown=postgres:root root /
+RUN pg_ctl init
+COPY --chown=postgres:root postgresql.conf /var/lib/postgres/data/
+COPY --chown=postgres:root pg_hba.conf /var/lib/postgres/data/
  
 EXPOSE 5432/tcp
 CMD ["postgres", "-i"]
