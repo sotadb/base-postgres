@@ -24,7 +24,7 @@ spec:
         svc: postgres
     spec:
       securityContext:
-        fsUser: 70
+        fsGroup: 70
       containers:
       - name: postgres
         image: sotadb/postgres 
@@ -38,7 +38,7 @@ spec:
       - name: postgres-cert
         secret:
           secretName: postgres-tls
-          defaultMode: 0400
+          defaultMode: 0440
 ---
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
