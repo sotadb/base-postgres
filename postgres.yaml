@@ -28,3 +28,27 @@ spec:
         image: sotadb/postgres 
         ports: 
         - containerPort: 5432
+        volumeMounts:
+        - name: postgres-cert
+          mountPath: "/var/lib/postgres/ssl"
+          readonly: true
+      volumes:
+      - name: postgres-cert
+        secret:
+          secretName: postgres-tls
+          defaultMode: 0400
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: postgres
+spec:
+  secretName: postgres-tls
+  issuerRef:
+    name: ca-issuer
+    kind: ClusterIssuer
+  commonName: postgres
+  organization:
+  - Internal Cluster CA
+  dnsNames:
+  - postgres
