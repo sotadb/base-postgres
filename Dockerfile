@@ -6,6 +6,7 @@ ENV PGDATA="/var/lib/postgres/data"
 
 RUN apk --update add --no-cache $PACKAGES && \
     mkdir -p /var/lib/postgres/data && \
+    mkdir -p /var/lib/postgres/ssl && \
     chown -R postgres:root /var/lib/postgres
 
 USER postgres
