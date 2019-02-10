@@ -23,6 +23,8 @@ spec:
       labels:
         svc: postgres
     spec:
+      securityContext:
+        fsUser: 70
       containers:
       - name: postgres
         image: sotadb/postgres 
