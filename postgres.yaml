@@ -31,7 +31,7 @@ spec:
         volumeMounts:
         - name: postgres-cert
           mountPath: "/var/lib/postgres/ssl"
-          readonly: true
+          readOnly: true
       volumes:
       - name: postgres-cert
         secret:
