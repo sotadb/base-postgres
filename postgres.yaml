@@ -51,6 +51,6 @@ spec:
     kind: ClusterIssuer
   commonName: postgres
   organization:
-  - Internal Cluster CA
+  - Postres Host
   dnsNames:
   - postgres
