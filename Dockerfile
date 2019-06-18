@@ -1,5 +1,5 @@
 # We use alpine as the base, and install postgres
-FROM alpine:3.5
+FROM alpine:3.9
 ENV LANG en_US.UTF-8
 ARG PACKAGES="postgresql postgresql-contrib"
 ENV PGDATA="/var/lib/postgres/data"
